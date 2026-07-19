@@ -65,8 +65,8 @@ func TestStreamTemplateDefault(t *testing.T) {
 💿 BluRay 🎞️ x265
 📺 HDR10 DV 🎧 DDP | 5.1
 💾 2.4 GB 📦 2.5 GB 〽️ 1.5 MB/s 👤 42
-🎙️ 🇬🇧 🇯🇵
-💬 🇬🇧
+🎙️ English Japanese
+💬 English
 ⚙️ GROUP 🔍 Indexer
 📄 movie.mkv
 `)
@@ -113,8 +113,8 @@ func TestStreamTemplateDefault(t *testing.T) {
 💿 BluRay 🎞️ x265
 📺 HDR10 DV 🎧 DDP | 5.1
 💾 2.4 GB 📦 2.5 GB 〽️ 1.5 MB/s 👤 42
-🎙️ 🇬🇧 🇯🇵
-💬 🇬🇧
+🎙️ English Japanese
+💬 English
 📄 movie.mkv
 `)
 			},
