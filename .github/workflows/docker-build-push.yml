@@ -46,7 +46,10 @@ jobs:
       - name: Calculate Image Tags
         env:
           INPUT_REF: ${{inputs.ref}}
+          IMAGE_REPO: ${{ github.repository }}
         run: |
+          IMAGE_REPO="$(echo "${IMAGE_REPO}" | tr '[:upper:]' '[:lower:]')"
+
           declare TAGS=""
           case "${INPUT_REF}" in
           [0-9]*.[0-9]*.[0-9]*)
@@ -80,7 +83,7 @@ jobs:
           {
             echo 'DOCKER_IMAGE_TAGS<<EOF'
             for tag in ${TAGS}; do
-            echo "ghcr.io/${{ github.repository }}:${tag}"
+            echo "ghcr.io/${IMAGE_REPO}:${tag}"
             done
             echo EOF
           } >> "${GITHUB_ENV}"
