@@ -152,6 +152,7 @@ If `username` is `*`, it is used as a fallback for users without explicit store 
 | Premiumize  | `premiumize` | `<api-key>`          |
 | RealDebrid  | `realdebrid` | `<api-token>`        |
 | TorBox      | `torbox`     | `<api-key>`          |
+| Torrin      | `torrin`     | `<api-key>`          |
 
 **Example:**
 
@@ -164,6 +165,13 @@ STREMTHRU_STORE_AUTH=user1:realdebrid:rd-api-token,user2:torbox:tb-api-key
 Comma-separated list of stale time for cached/uncached content in `store_name:cached_stale_time:uncached_stale_time` format.
 
 If `store_name` is `*`, it is used as a fallback.
+
+Minimum allowed values depend on whether StremThru is connected to upstream or not:
+
+| Upstream     | Min Cached | Min Uncached |
+| ------------ | ---------- | ------------ |
+| Connected    | `18h`      | `6h`         |
+| Disconnected | `30m`      | `5m`         |
 
 - **Default:** `*:24h:8h`
 

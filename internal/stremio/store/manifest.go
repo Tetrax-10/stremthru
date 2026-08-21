@@ -33,6 +33,7 @@ var logoByStoreCode = map[string]string{
 	"pp": "https://mypikpak.com/android-chrome-192x192.png",
 	"rd": "https://fcdn.real-debrid.com/0830/favicons/android-chrome-192x192.png",
 	"tb": "https://torbox.app/android-chrome-192x192.png",
+	"ti": "https://torrin.app/favicon.png",
 }
 
 func getManifestCatalog(code string, hideCatalog bool) stremio.Catalog {
@@ -108,8 +109,9 @@ func GetManifest(r *http.Request, ud *UserData) (*stremio.Manifest, error) {
 							catalogs = append(catalogs, getManifestCatalog(usenetCode, ud.HideCatalog))
 						}
 
-						if storeName == store.StoreNameTorBox || storeName == store.StoreNamePikPak {
-							if ud.EnableWebDL {
+						if ud.EnableWebDL {
+							switch storeName {
+							case store.StoreNameDebridLink, store.StoreNameTorBox, store.StoreNamePikPak:
 								webdlCode := code + "-webdl"
 								idPrefixes = append(idPrefixes, getIdPrefix(webdlCode))
 								catalogs = append(catalogs, getManifestCatalog(webdlCode, ud.HideCatalog))
@@ -154,8 +156,9 @@ func GetManifest(r *http.Request, ud *UserData) (*stremio.Manifest, error) {
 				catalogs = append(catalogs, getManifestCatalog(usenetCode, ud.HideCatalog))
 			}
 
-			if storeName == store.StoreNameTorBox || storeName == store.StoreNamePikPak {
-				if ud.EnableWebDL {
+			if ud.EnableWebDL {
+				switch storeName {
+				case store.StoreNameDebridLink, store.StoreNameTorBox, store.StoreNamePikPak:
 					webdlCode := storeCode + "-webdl"
 					idPrefixes = append(idPrefixes, getIdPrefix(webdlCode))
 					catalogs = append(catalogs, getManifestCatalog(webdlCode, ud.HideCatalog))

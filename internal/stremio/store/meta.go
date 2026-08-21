@@ -313,10 +313,11 @@ func getStoreContentInfo(s store.Store, storeToken string, id string, clientIp s
 
 	if idr.isWebDL {
 		switch s.GetName() {
-		case store.StoreNamePikPak:
+		case store.StoreNameDebridLink, store.StoreNamePikPak:
 			if webzStore, ok := s.(store.WebzStore); ok {
 				params := &store.GetWebzParams{
-					Id: id,
+					Id:       id,
+					ClientIP: clientIp,
 				}
 				params.APIKey = storeToken
 				webz, err := webzStore.GetWebz(params)
@@ -631,7 +632,7 @@ func handleMeta(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	if !idr.isUsenet && !idr.isWebDL {
+	if !idr.isUsenet && !idr.isWebDL && !ctx.Store.GetName().Code().HasUntrustedData() {
 		go torrent_info.Upsert([]torrent_info.TorrentInfoInsertData{tInfo}, "", ctx.Store.GetName().Code() != store.StoreCodeRealDebrid)
 	}
 
