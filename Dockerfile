@@ -26,12 +26,12 @@ COPY apps/dash/.output/public/ ./internal/dash/fs/
 
 ENV CGO_ENABLED=1
 ENV XX_GO_PREFER_C_COMPILER=zig
-RUN xx-go build --tags 'sqlite_fts5,sqlite_stat4' -ldflags='-s -w -linkmode external -extldflags "-static"' -o stremthru
-RUN xx-verify --static stremthru
+RUN xx-go build --tags 'sqlite_fts5,sqlite_stat4' -ldflags='-s -w -linkmode external' -o stremthru
+RUN xx-verify stremthru
 
 FROM alpine
 
-RUN apk add --no-cache git ffmpeg
+RUN apk add --no-cache git ffmpeg tini mimalloc2
 
 WORKDIR /app
 
@@ -41,6 +41,11 @@ VOLUME ["/app/data"]
 
 ENV STREMTHRU_ENV=prod
 
+# replace musl's allocator with mimalloc
+ENV LD_PRELOAD=/usr/lib/libmimalloc.so.2
+
 EXPOSE 8080
 
-ENTRYPOINT ["./stremthru"]
+ENTRYPOINT ["/sbin/tini", "--"]
+
+CMD ["./stremthru"]

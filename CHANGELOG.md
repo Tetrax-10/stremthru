@@ -1,5 +1,78 @@
 # Changelog
 
+## [0.105.3](https://github.com/MunifTanjim/stremthru/compare/0.105.2...0.105.3) (2026-10-02)
+
+
+### Bug Fixes
+
+* **db:** release postgres advisory lock tx when acquire fails ([94e2ae3](https://github.com/MunifTanjim/stremthru/commit/94e2ae3158779bcf3ae6938d88e32f3c3c45e017))
+* **lzstring:** return error instead of panic on truncated input ([808ba00](https://github.com/MunifTanjim/stremthru/commit/808ba00b6c0c267769a8c75edff88da46118bcd6))
+* **torznab:** include season packs for tvsearch without episode ([b76b234](https://github.com/MunifTanjim/stremthru/commit/b76b234982f8bc5babad90d2d5dc2e726953aceb))
+* **worker:** support dmm hashlist stored list format ([f848a56](https://github.com/MunifTanjim/stremthru/commit/f848a569c7d10354c5af987ae8047dab0df2693e))
+
+
+### Performance Improvements
+
+* **lzstring:** use lookup table for base value ([731eec9](https://github.com/MunifTanjim/stremthru/commit/731eec95faee17f90b810947fbca3bba2fdee6a1))
+
+## [0.105.2](https://github.com/MunifTanjim/stremthru/compare/0.105.1...0.105.2) (2026-09-21)
+
+
+### Performance Improvements
+
+* preload mimalloc to bound container memory ([1b5e99a](https://github.com/MunifTanjim/stremthru/commit/1b5e99a121da059c3c0ed4b3ad39b8651252a514))
+* **worker:** cut allocation churn in anidb title matching ([90ac479](https://github.com/MunifTanjim/stremthru/commit/90ac4797251ab5ab1630318e3e3dd6fd1870d536))
+
+## [0.105.1](https://github.com/MunifTanjim/stremthru/compare/0.105.0...0.105.1) (2026-09-19)
+
+
+### Performance Improvements
+
+* **db:** set sqlite pool size to cap memory usage ([ee89105](https://github.com/MunifTanjim/stremthru/commit/ee89105885cbe4f5b7d943f39480d0dd023c9d03))
+
+## [0.105.0](https://github.com/MunifTanjim/stremthru/compare/0.104.2...0.105.0) (2026-09-15)
+
+
+### Features
+
+* **debug:** add admin-guarded pprof endpoints ([d55e759](https://github.com/MunifTanjim/stremthru/commit/d55e75999dc4f8c55c67701ef5286cd666407b7f))
+
+## [0.104.2](https://github.com/MunifTanjim/stremthru/compare/0.104.1...0.104.2) (2026-09-11)
+
+
+### Bug Fixes
+
+* **stremio:** fix race between magnet tracking and strem id tagging ([a4d09bc](https://github.com/MunifTanjim/stremthru/commit/a4d09bcbdb2be1f8d1418495e99dd3237465de6b))
+
+## [0.104.1](https://github.com/MunifTanjim/stremthru/compare/0.104.0...0.104.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* **stremio/transformer:** add missing ISO 639-2/B language aliases ([c5cad99](https://github.com/MunifTanjim/stremthru/commit/c5cad997fc317996d5594e93fbf0a201911ca1a9))
+* **stremio/transformer:** add missing subtitle/audio languages ([73bf362](https://github.com/MunifTanjim/stremthru/commit/73bf362ecab3780bf094fba0fdf7f078f00291ce))
+* **stremio:** preserve private flag across magnet status wait ([3433b40](https://github.com/MunifTanjim/stremthru/commit/3433b40cdb9aa7c531a0f40b5098be51c9ab87b0))
+* **stremio:** propagate private flag from add magnet response ([eaea9a2](https://github.com/MunifTanjim/stremthru/commit/eaea9a27f8336bf9309a1fab31e6f964a8b12095))
+* **stremio:** propagate size from add magnet response ([6aebd72](https://github.com/MunifTanjim/stremthru/commit/6aebd72d0c4d5c3fadebdbc72452d2337020f0d0))
+
+## [0.104.0](https://github.com/MunifTanjim/stremthru/compare/0.103.2...0.104.0) (2026-08-28)
+
+
+### Features
+
+* **stremio/transformer:** show edition in default stream template ([360206a](https://github.com/MunifTanjim/stremthru/commit/360206a37a5b3e0cc5cc739930c7e494c4b9a306))
+* **torznab:** add team attr for release group ([e97392a](https://github.com/MunifTanjim/stremthru/commit/e97392a78210d4b51cc556659e1c90a83d1f4a55))
+* **torz:** try to record torrent info when generating links ([227c508](https://github.com/MunifTanjim/stremthru/commit/227c5088e5fc1f257bf2ca3335cd04c4138a433d))
+
+
+### Bug Fixes
+
+* **shared:** add response header timeout to proxy clients ([00ff82d](https://github.com/MunifTanjim/stremthru/commit/00ff82dc63e8a9703568b2b2e47b90e0a5b843e1))
+* **shared:** bind proxied request to request context ([de49535](https://github.com/MunifTanjim/stremthru/commit/de49535dcde6a382f093ba3057e5478b37e1e087))
+* **stremio/torz:** cancel indexer search on timeout ([8b8bcb2](https://github.com/MunifTanjim/stremthru/commit/8b8bcb2749faf19508b91d926b8011a37fdfeb0b))
+* **stremio/torz:** cancel magnet fetch on timeout ([552ddc6](https://github.com/MunifTanjim/stremthru/commit/552ddc6c8d9854891a75f7ddc52bc62760078e29))
+* use tini as init to reap zombie processes ([d9b2fe2](https://github.com/MunifTanjim/stremthru/commit/d9b2fe2e700cd8603ab30b40ba46636169e21238))
+
 ## [0.103.2](https://github.com/MunifTanjim/stremthru/compare/0.103.1...0.103.2) (2026-08-01)
 
 
